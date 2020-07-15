@@ -20,6 +20,7 @@
 #
 #############################################################################
 
+from __future__ import print_function
 from Components.Console import Console
 from Components.config import config
 
@@ -46,11 +47,11 @@ class GBIpboxMount:
 		if config.ipboxclient.mounthdd.value:
 			if self.isMountPoint(self.mountpoint):
 				if not self.umount(self.mountpoint):
-					print 'Cannot umount ' + self.mounpoint
+					print ('Cannot umount ' + self.mounpoint)
 					return
 
 			if not self.mount(config.ipboxclient.host.value, self.share, self.mountpoint):
-				print 'Cannot mount ' + config.ipboxclient.host.value + '/' + self.share + ' to ' + self.mountpoint
+				print ('Cannot mount ' + config.ipboxclient.host.value + '/' + self.share + ' to ' + self.mountpoint)
 			else:
 				mountstate = True
 				mounthost = config.ipboxclient.host.value
